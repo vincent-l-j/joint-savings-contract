@@ -90,6 +90,8 @@ contract JointSavings {
     /*
     Finally, add the **default fallback function** so that your contract can store Ether sent from outside the deposit function.
     */
+    receive() external payable { }
+
     /// @notice The fallback function is executed on a call to the contract if no other functions match the given function signature, or if no data was supplied at all and there is no receive Ether function.
     fallback() external payable { }
 }
