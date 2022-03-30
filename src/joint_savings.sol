@@ -63,7 +63,8 @@ contract JointSavings {
         recipient.transfer(amount);
     }
 
-    // Define a `public payable` function named `deposit`.
+    /// @notice This function takes the amount to be transferred as a parameter and then checks if that's the actual amount transferred. This allows the contract to reject transactions that may be erroneous
+    /// @param amount The amount in wei to be transferred.
     function deposit(uint256 amount) public payable {
         // Ensure the amount specified matches the amount attached to the transaction
         require(msg.value == amount, "Attached amount doesn't match the stated deposit amount");
