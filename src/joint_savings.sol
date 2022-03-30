@@ -79,6 +79,12 @@ contract JointSavings {
         // YOUR CODE HERE!
     }
 
+    /// @notice show the balance of this contract
+    /// @return balance the balance of this contract
+    function getBalance() public view returns (uint256 balance) {
+        return address(this).balance;
+    }
+
     /*
     Finally, add the **default fallback function** so that your contract can store Ether sent from outside the deposit function.
     */
