@@ -70,9 +70,10 @@ contract JointSavings {
         require(msg.value == amount, "Attached amount doesn't match the stated deposit amount");
     }
 
-    /*
-    Define a `public` function named `setAccounts` that receive two `address payable` arguments named `account1` and `account2`.
-    */
+    /// @notice Set the two accounts which are able to withdraw from this smart contract. They could be the same account but that defeats the purpose of this contract.
+    /// @dev WARNING! Still needs a check to ensure that only the owner of this contract can use this function.
+    /// @param account1 The address of one of the owners of this joint account
+    /// @param account2 The address of the other owner of this joint account
     function setAccounts(address payable account1, address payable account2) public{
 
         // Set the values of `accountOne` and `accountTwo` to `account1` and `account2` respectively.
