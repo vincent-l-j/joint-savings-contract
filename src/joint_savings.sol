@@ -31,11 +31,9 @@ contract JointSavings {
     address public lastToWithdraw;
     uint256 public lastWithdrawAmount;
 
-    /*
-    Define a function named **withdraw** that will accept two arguments.
-    - A `uint` variable named `amount`
-    - A `payable address` named `recipient`
-    */
+    /// @notice Withdraw funds to an account
+    /// @param amount The amount (in wei) to withdraw
+    /// @param recipient address to which the funds should be transferred
     function withdraw(uint amount, address payable recipient) public {
 
         /*
