@@ -64,12 +64,9 @@ contract JointSavings {
     }
 
     // Define a `public payable` function named `deposit`.
-    function deposit() public payable {
-
-        /*
-        Call the `contractBalance` variable and set it equal to the balance of the contract by using `address(this).balance`.
-        */
-        // YOUR CODE HERE!
+    function deposit(uint256 amount) public payable {
+        // Ensure the amount specified matches the amount attached to the transaction
+        require(msg.value == amount, "Attached amount doesn't match the stated deposit amount");
     }
 
     /*
