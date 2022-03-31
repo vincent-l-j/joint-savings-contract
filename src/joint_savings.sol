@@ -87,9 +87,7 @@ contract JointSavings {
         return address(this).balance;
     }
 
-    /*
-    Finally, add the **default fallback function** so that your contract can store Ether sent from outside the deposit function.
-    */
+    /// @notice The receive function is executed on a call to the contract with empty calldata. This is the function that is executed on plain Ether transfers (e.g. via .send() or .transfer()).
     receive() external payable { }
 
     /// @notice The fallback function is executed on a call to the contract if no other functions match the given function signature, or if no data was supplied at all and there is no receive Ether function.
