@@ -14,10 +14,21 @@ contract JointSavings {
         accountTwo = payable(msg.sender);
     }
 
+    /// @notice modifier to check if caller is an owner
+    /// @dev Throws if called by any account other than the owner.
+    modifier onlyJointOwner() {
+        // If the first argument of 'require' evaluates to 'false', execution terminates and all
+        // changes to the state and to Ether balances are reverted.
+        // This used to consume all gas in old EVM versions, but not anymore.
+        // It is often a good idea to use 'require' to check if functions are called correctly.
+        require(msg.sender == accountOne || msg.sender == accountTwo, "You don't own this account!");
+        _;
+    }
+
     /// @notice Withdraw funds to an account
     /// @param amount The amount (in wei) to withdraw
     /// @param recipient address to which the funds should be transferred
-    function withdraw(uint amount, address payable recipient) public {
+    function withdraw(uint amount, address payable recipient) public onlyJointOwner {
 
         /*
         Ensure the `recipient` is equal to either `accountOne` or `accountTwo`.
