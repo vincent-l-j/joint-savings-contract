@@ -8,6 +8,12 @@ contract JointSavings {
     address public lastToWithdraw;
     uint256 public lastWithdrawAmount;
 
+    /// @dev Initializes the contract setting the deployer as the initial owner.
+    constructor() {
+        accountOne = payable(msg.sender);
+        accountTwo = payable(msg.sender);
+    }
+
     /// @notice Withdraw funds to an account
     /// @param amount The amount (in wei) to withdraw
     /// @param recipient address to which the funds should be transferred
