@@ -3,15 +3,15 @@ pragma solidity ^0.8.0;
 
 contract JointSavings {
 
-    address payable accountOne;
-    address payable accountTwo;
+    address accountOne;
+    address accountTwo;
     address public lastToWithdraw;
     uint256 public lastWithdrawAmount;
 
     /// @dev Initializes the contract setting the deployer as the initial owner.
     constructor() {
-        accountOne = payable(msg.sender);
-        accountTwo = payable(msg.sender);
+        accountOne = msg.sender;
+        accountTwo = msg.sender;
     }
 
     /// @notice modifier to check if caller is an owner
@@ -67,7 +67,7 @@ contract JointSavings {
     /// @notice Set the two accounts which are able to withdraw from this smart contract. They could be the same account but that defeats the purpose of this contract.
     /// @param account1 The address of one of the owners of this joint account
     /// @param account2 The address of the other owner of this joint account
-    function setAccounts(address payable account1, address payable account2) public onlyJointOwner {
+    function setAccounts(address account1, address account2) public onlyJointOwner {
 
         // Set the values of `accountOne` and `accountTwo` to `account1` and `account2` respectively.
         accountOne = account1;
