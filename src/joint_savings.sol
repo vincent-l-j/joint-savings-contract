@@ -68,6 +68,7 @@ contract JointSavings {
     /// @param account1 The address of one of the owners of this joint account
     /// @param account2 The address of the other owner of this joint account
     function setAccounts(address account1, address account2) public onlyJointOwner {
+        require(account1 != address(0) && account2 != address(0), "You cannot set an account address to the zero address");
 
         // Set the values of `accountOne` and `accountTwo` to `account1` and `account2` respectively.
         accountOne = account1;
